@@ -4,10 +4,14 @@ from runner import Runner
 import math
 
 class Race(ABC):
-    def __init__(self, distance, runners = None):
-        self.runners = []
+    def __init__(self, distance: float, runners: list):
+        # will contain runners from previous class
+        self.runners = runners
+        # string of only 2 vals: 'short' for short races, 'long' marathon
         self.race_type = "short"
+        # positive float val
         self.distance = distance
+        # only for marathons: energy consumed/km of marathon
         self.energy_per_km = 100
     
     def add_runner(self, runner):
@@ -35,14 +39,11 @@ class Race(ABC):
                 result.append((runner, time_taken))
         return result
 
-class ShortRace:
-    # Why do we even have these? These are so silly
-    def __init__(self, distance, runners = None):
-        self.runners = []
-        self.race_type = "short"
-        self.distance = distance
-        self.energy_per_km = 100
+class ShortRace(Race):
+    def __init__(self):
+        # only 2 vals: 8 (short races) 16 (marathons)
         self.maximum_participants = 8
+        # only 2 vals: 1.2 meters (short races) t=x/y*1.2 meters (marathon)
         self.time_multiplier = 1.2
     
     def add_runner(self, runner):

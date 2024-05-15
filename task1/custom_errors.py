@@ -1,3 +1,5 @@
+import runner
+
 """
 This file contains custom errors that have been created for the purpose of testing 
 you on your knowledge of how and when to raise errors. 
@@ -15,6 +17,7 @@ class CustomTypeError(Exception):
     """
     This error should be raised when the type of the value isn't what its expected to be.
     """
+    
     pass
 
 class CustomAttributeError(Exception):

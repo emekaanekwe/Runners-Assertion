@@ -6,7 +6,7 @@ from custom_errors import *
 
 class Runner:
     def __init__(self, name: str, age: int, country, sprint_speed: float, endurance_speed: float):
-        max_energy = 1000
+        self.max_energy = 1000
         self.name = name
         # between 5-20 inclusive
         self.age = age
@@ -16,12 +16,9 @@ class Runner:
         self.sprint_speed = sprint_speed
         # between 1.8-5.4 meters per second inclusive
         self.endurance_speed = endurance_speed
-        # current level of energy
-        self.energy = max_energy
-    
     
     # return the value of energy and check the value's params
-    def drain_energy(self, drain_points) -> int:
+    def drain_energy(self, drain_points) -> int:        
         assert self.energy < 0, "energy cannot be less than 0"
         assert drain_points < 0, "drain_points cannot be less than 0"
         assert drain_points > self.energy, "drain_points cannot be higher than max energy"
